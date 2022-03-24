@@ -1,4 +1,21 @@
-const puppeteer = require('puppeteer')
+// const {CONNECTION_STRING} = process.env
+require('dotenv').config()
+const puppeteer = require('puppeteer');
+
+
+
+// const Sequelize = require('sequelize')
+
+// const sequelize = new Sequelize(CONNECTION_STRING, {
+//     dialect: 'postgres', 
+//     dialectOptions: {
+//         ssl: {
+//             rejectUnauthorized: false
+//         }
+//     }
+// });
+ 
+
 
 async function scrapeProduct(url){
     const browser = await puppeteer.launch();
@@ -17,11 +34,25 @@ async function scrapeProduct(url){
     const txt2 = await el3.getProperty('textContent');
     const price = await txt2.jsonValue();
 
-    console.log({imageUrl
-        ,title,price
-    })
+   const trifecta = await {title,price,imageUrl}
+
+     
 
     browser.close()
+    
+return trifecta
+
+    // console.log(title1)
+    
+
+    
+
+  
+    //     INSERT into books (title,price,imageUrl)
+    //     VALUES (${title1}, ${price1}, ${imageUrl1})
+    // )
+  
+    
 }
 
 scrapeProduct('https://www.amazon.com/Black-Swan-Improbable-Robustness-Fragility/dp/081297381X/ref=sr_1_2?crid=6QGGQ7IKN43U&keywords=black+swan&qid=1647897518&sprefix=black+swan%2Caps%2C133&sr=8-2');
